@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="Список дел" Style="{StaticResource HeaderStyle}" HorizontalAlignment="Left" Margin="10"/>
-        <Button Grid.Row="0" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Click="AddButton_Click">
+        <Button Grid.Row="0" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Click="AddButtonClick">
             <Image Source="Image/add.png" Width="20" Height="20" />
         </Button>
 
@@ -46,7 +46,7 @@
                 <DataGridTemplateColumn Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="DeleteButton_Click" Padding="0" Background="#5EBEC4">
+                            <Button Click="DeleteButtonClick" Padding="0" Background="#5EBEC4">
                                 <Image Source="Image/delete.png" Width="16" Height="16" Stretch="Uniform" />
                             </Button>
                         </DataTemplate>

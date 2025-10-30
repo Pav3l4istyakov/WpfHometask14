@@ -17,7 +17,7 @@
             <ScrollViewer Margin="5" Height="100" VerticalScrollBarVisibility="Auto">
                 <TextBox Name="DescriptionTextBox" AcceptsReturn="True" TextWrapping="Wrap" BorderThickness="0"/>
             </ScrollViewer>
-            <Button Content="Сохранить дело" Margin="5" Background="#5EBEC4" Click="SaveButton_Click"/>
+            <Button Content="Сохранить дело" Margin="5" Background="#5EBEC4" Click="SaveButtonClick"/>
         </StackPanel>
     </Grid>
         

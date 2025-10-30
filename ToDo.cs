@@ -9,47 +9,47 @@ namespace WpfHometask14
 {
     public class ToDo : INotifyPropertyChanged
     {
-        private string _title;
-        private DateTime _dueDate;
-        private bool _doing;
-        private string _description;
+        private string title;
+        private DateTime dueDate;
+        private bool doing;
+        private string description;
 
         public string Title
         {
-            get { return _title; }
+            get { return title; }
             set
             {
-                _title = value;
+                title = value;
                 OnPropertyChanged(nameof(Title));
             }
         }
 
         public DateTime DueDate
         {
-            get { return _dueDate; }
+            get { return dueDate; }
             set
             {
-                _dueDate = value;
+                dueDate = value;
                 OnPropertyChanged(nameof(DueDate));
             }
         }
 
         public bool Doing
         {
-            get { return _doing; }
+            get { return doing; }
             set
             {
-                _doing = value;
+                doing = value;
                 OnPropertyChanged(nameof(Doing)); 
             }
         }
 
         public string Description
         {
-            get { return _description; }
+            get { return description; }
             set
             {
-                _description = value;
+                description = value;
                 OnPropertyChanged(nameof(Description));
             }
         }
