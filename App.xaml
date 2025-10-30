@@ -4,18 +4,13 @@
              xmlns:local="clr-namespace:WpfHometask14"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Window">
-            <Setter Property="Background" Value="#FFFDFAF1"/>
-            <Setter Property="Icon" Value="Image/icon.png" />
-        </Style>
-
         <Style TargetType="Button">
             <Setter Property="Background" Value="#5EBEC4"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="FontFamily" Value="Cascadia Mono"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
-
         <Style TargetType="TextBox">
             <Setter Property="BorderThickness" Value="1.5"/>
             <Setter Property="BorderBrush" Value="#5EBEC4"/>

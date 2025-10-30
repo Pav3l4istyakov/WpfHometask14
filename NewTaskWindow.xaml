@@ -20,5 +20,5 @@
             <Button Content="Сохранить дело" Margin="5" Background="#5EBEC4" Click="SaveButton_Click"/>
         </StackPanel>
     </Grid>
-</Window>
-
+        
+    </Window>

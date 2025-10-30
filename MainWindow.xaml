@@ -12,21 +12,23 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
         <TextBlock Grid.Row="0" Text="Список дел" Style="{StaticResource HeaderStyle}" HorizontalAlignment="Left" Margin="10"/>
         <Button Grid.Row="0" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Click="AddButton_Click">
             <Image Source="Image/add.png" Width="20" Height="20" />
         </Button>
+
         <DataGrid Grid.Row="1" Margin="5" Name="TaskListDataGrid" AutoGenerateColumns="False"
-        ItemsSource="{Binding TodoList}" RowBackground="White" AlternatingRowBackground="#FFFDFAF1"
-         HorizontalGridLinesBrush="#5EBEC4" GridLinesVisibility="Horizontal" HeadersVisibility="None"
-        CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                  ItemsSource="{Binding TodoList}" RowBackground="White" AlternatingRowBackground="#FFFDFAF1"
+                  HorizontalGridLinesBrush="#5EBEC4" GridLinesVisibility="Horizontal" HeadersVisibility="None"
+                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Выполнено" Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="{Binding Doing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"/>
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -36,9 +38,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="50">
-                                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="12" />
-                                </ScrollViewer>
+                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="12" />
                             </ScrollViewer>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -65,7 +65,8 @@
             </DataGrid.Resources>
         </DataGrid>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="5">
-
+           
+                      
         </StackPanel>
     </Grid>
 </Window>
