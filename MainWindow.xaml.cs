@@ -56,7 +56,7 @@ namespace WpfHometask14
                 todo.PropertyChanged += TodoItem_PropertyChanged;
             }
 
-            // Обновляем прогресс
+            
             UpdateProgress();
         }
 
