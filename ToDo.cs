@@ -40,7 +40,7 @@ namespace WpfHometask14
             set
             {
                 _doing = value;
-                OnPropertyChanged(nameof(Doing));
+                OnPropertyChanged(nameof(Doing)); 
             }
         }
 

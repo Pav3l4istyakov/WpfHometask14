@@ -27,19 +27,21 @@ namespace WpfHometask14
         
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            string title = TitleTextBox.Text;
+            string title = TitleTextBox.Text.Trim();
             DateTime? dueDate = DueDatePicker.SelectedDate;
-            string description = DescriptionTextBox.Text;
+            string description = DescriptionTextBox.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(title))
             {
-                MessageBox.Show(" введите название задачи.");
+                MessageBox.Show("Нужно ввести название задачи.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
+            
             ToDo newItem = new ToDo(title, dueDate.GetValueOrDefault(), false, description);
             MainWindow.TodoList.Add(newItem);
 
+           
             this.Close();
         }
     }
