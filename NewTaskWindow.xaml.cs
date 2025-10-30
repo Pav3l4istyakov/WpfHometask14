@@ -24,14 +24,7 @@ namespace WpfHometask14
             InitializeComponent();
         }
 
-        //Удалите этот метод AddButton_Click, он не нужен
-        /*private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            NewTaskWindow addToDoWindow = new NewTaskWindow();
-            addToDoWindow.Owner = this;
-            addToDoWindow.ShowDialog();
-        }*/
-
+        
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             string title = TitleTextBox.Text;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfHometask14"
         mc:Ignorable="d"
-          Title="MainWindow" Height="450" Width="400">
+        Title="MainWindow" Height="450" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -64,9 +64,18 @@
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="5">
-           
-                      
+        <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Stretch" Margin="5">
+            <TextBlock Name="ProgressText" HorizontalAlignment="Center"/>
+            <ProgressBar Name="TaskProgressBar" Height="20" Margin="5">
+                <ProgressBar.Resources>
+                    <Style TargetType="ProgressBar">
+                        <Setter Property="Background" Value="#FFFDFAF1"/>
+                        <Setter Property="Foreground" Value="#5EBEC4"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="#5EBEC4"/>
+                    </Style>
+                </ProgressBar.Resources>
+            </ProgressBar>
         </StackPanel>
     </Grid>
 </Window>

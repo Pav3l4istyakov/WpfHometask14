@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,13 +24,22 @@ namespace WpfHometask14
         {
             InitializeComponent();
 
-
+            // Добавляем тестовые задачи
             TodoList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), true, "Нет описания"));
             TodoList.Add(new ToDo("Поработать", new DateTime(2024, 1, 20), false, "Съездить на совещание в Москву"));
             TodoList.Add(new ToDo("Отдохнуть", new DateTime(2024, 2, 1), false, "Съездить в отпуск в Сочи"));
-            TodoList = new ObservableCollection<ToDo>(TodoList.OrderBy(x => x.DueDate));
+
+            // Привязка к источнику данных
             TaskListDataGrid.ItemsSource = TodoList;
-            DataContext = this;
+
+            // Обновляем прогресс при изменении свойств задач
+            foreach (var todo in TodoList)
+            {
+                todo.PropertyChanged += TodoItem_PropertyChanged;
+            }
+
+            // Первоначальная настройка прогресса
+            UpdateProgress();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -37,6 +47,9 @@ namespace WpfHometask14
             NewTaskWindow addToDoWindow = new NewTaskWindow();
             addToDoWindow.Owner = this;
             addToDoWindow.ShowDialog();
+
+            // Обновляем прогресс после добавления задачи
+            UpdateProgress();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -46,6 +59,7 @@ namespace WpfHometask14
             if (itemToRemove != null)
             {
                 TodoList.Remove(itemToRemove);
+                UpdateProgress(); // Обновляем прогресс после удаления задачи
             }
         }
 
@@ -55,24 +69,31 @@ namespace WpfHometask14
             if (selectedItem != null)
             {
                 TodoList.Remove(selectedItem);
+                UpdateProgress(); // Обновляем прогресс после удаления выбранной задачи
             }
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void TodoItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (TaskListDataGrid.SelectedItem is ToDo selectedTask)
+            if (e.PropertyName == nameof(ToDo.Doing))
             {
-                selectedTask.Doing = true;
-
+                UpdateProgress(); // Обновляем прогресс при изменении статуса задачи
             }
         }
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void UpdateProgress()
         {
-            if (TaskListDataGrid.SelectedItem is ToDo selectedTask)
-            {
-                selectedTask.Doing = false;
-            }
+            int totalTasks = TodoList.Count;
+            int completedTasks = TodoList.Count(x => x.Doing);
+
+            // Обновляем прогресс бар
+            TaskProgressBar.Minimum = 0;
+            TaskProgressBar.Maximum = totalTasks;
+            TaskProgressBar.Value = completedTasks;
+
+            // Обновляем текст прогресса
+            ProgressText.Text = $"{completedTasks} / {totalTasks}";
         }
     }
+
 }
