@@ -8,23 +8,41 @@
           Title="MainWindow" Height="450" Width="400">
     <Grid>
         <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-         <RowDefinition Height="*"/>
-        <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Список дел" Style="{StaticResource HeaderStyle}" HorizontalAlignment="Left" Margin="10"/>
         <Button Grid.Row="0" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Click="AddButton_Click">
-        <Image Source="Image/add.png" Width="20" Height="20" />
+            <Image Source="Image/add.png" Width="20" Height="20" />
         </Button>
         <DataGrid Grid.Row="1" Margin="5" Name="TaskListDataGrid" AutoGenerateColumns="False"
-       ItemsSource="{Binding TodoList}" RowBackground="White" AlternatingRowBackground="#FFFDFAF1"
-      HorizontalGridLinesBrush="#5EBEC4" GridLinesVisibility="Horizontal" HeadersVisibility="None"
-     CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        ItemsSource="{Binding TodoList}" RowBackground="White" AlternatingRowBackground="#FFFDFAF1"
+         HorizontalGridLinesBrush="#5EBEC4" GridLinesVisibility="Horizontal" HeadersVisibility="None"
+        CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Выполнено" Binding="{Binding Doing, Mode=TwoWay}" Width="Auto"/>
+                <DataGridTemplateColumn Header="Выполнено" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Doing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="*"/>
                 <DataGridTextColumn Header="Выполнить до" Binding="{Binding DueDate, StringFormat=d}" Width="Auto"/>
-                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="*"/>
+                <DataGridTemplateColumn Header="Описание" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="50">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="12" />
+                                </ScrollViewer>
+                            </ScrollViewer>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -47,8 +65,7 @@
             </DataGrid.Resources>
         </DataGrid>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="5">
-       <Button Content="Удалить дело" Background="#5EBEC4" Foreground="White" Padding="10" Margin="5" Click="DeleteSelectedTask_Click"/>
-      <Button Content="Добавить дело" Background="#5EBEC4" Foreground="White" Padding="10" Margin="5" Click="AddButton_Click"/>
-     </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Window>

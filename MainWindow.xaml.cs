@@ -23,20 +23,20 @@ namespace WpfHometask14
         {
             InitializeComponent();
 
-            
+
             TodoList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), true, "Нет описания"));
             TodoList.Add(new ToDo("Поработать", new DateTime(2024, 1, 20), false, "Съездить на совещание в Москву"));
             TodoList.Add(new ToDo("Отдохнуть", new DateTime(2024, 2, 1), false, "Съездить в отпуск в Сочи"));
             TodoList = new ObservableCollection<ToDo>(TodoList.OrderBy(x => x.DueDate));
             TaskListDataGrid.ItemsSource = TodoList;
-            DataContext = this;  
+            DataContext = this;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             NewTaskWindow addToDoWindow = new NewTaskWindow();
             addToDoWindow.Owner = this;
-            addToDoWindow.ShowDialog(); 
+            addToDoWindow.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

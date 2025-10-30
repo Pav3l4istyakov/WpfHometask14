@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfHometask14"
         mc:Ignorable="d"
-         Title="Добавить дело" Height="450" Width="400" ResizeMode="NoResize" Background="#FFFDFAF1">
+        Title="Добавить дело" Height="450" Width="400" ResizeMode="NoResize" Background="#FFFDFAF1">
     <Grid>
         <StackPanel Margin="10">
             <TextBlock Text="Добавить дело" Style="{StaticResource HeaderStyle}" HorizontalAlignment="Left" Margin="10"/>
@@ -14,7 +14,9 @@
             <TextBlock Text="Выполнить до:" Margin="5"/>
             <DatePicker Name="DueDatePicker" BorderThickness="1.5" BorderBrush="#5EBEC4" Background="White" SelectedDateFormat="Long"/>
             <TextBlock Text="Описание:" Margin="5"/>
-            <TextBox Name="DescriptionTextBox" Margin="5" AcceptsReturn="True" TextWrapping="Wrap" Height="100"/>
+            <ScrollViewer Margin="5" Height="100" VerticalScrollBarVisibility="Auto">
+                <TextBox Name="DescriptionTextBox" AcceptsReturn="True" TextWrapping="Wrap" BorderThickness="0"/>
+            </ScrollViewer>
             <Button Content="Сохранить дело" Margin="5" Background="#5EBEC4" Click="SaveButton_Click"/>
         </StackPanel>
     </Grid>
